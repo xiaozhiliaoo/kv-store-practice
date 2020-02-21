@@ -13,8 +13,18 @@ import static org.junit.Assert.*;
 
 public class VoteManagerTest {
 
-    @Test
-    public void setKey() {
+    private String article(Long articleId) {
+        return "article:" + articleId;
+    }
 
+    @Test
+    public void postArticle() {
+        String user = "lili";
+        VoteManager voteManager = new VoteManager();
+        long articleId = voteManager.postArticle(user,
+                "doHomework", "www.baidu.com");
+        System.out.println(articleId);
+
+        voteManager.articleVote(user, article(articleId));
     }
 }
