@@ -501,10 +501,49 @@ public class RedisClient {
         return result;
     }
 
+    public Long rpush(String key, String... strings) {
+        Long result = null;
+        try {
+            result = conn.rpush(key, strings);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+        return result;
+    }
+
+    public String brpoplpush(String source, String destination, int timeout) {
+        try {
+            String brpoplpush = conn.brpoplpush(source, destination, timeout);
+            return brpoplpush;
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    public List<String> blpop(int timeout, String... keys) {
+        try {
+            return conn.blpop(timeout, keys);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
     public Long lpush(String key, String string) {
         Long result = null;
         try {
             result = conn.lpush(key, string);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+        return result;
+    }
+
+    public Long lpush(String key, String... strings) {
+        Long result = null;
+        try {
+            result = conn.lpush(key, strings);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }
@@ -603,6 +642,38 @@ public class RedisClient {
         return result;
     }
 
+    public Set<String> sdiff(final String... keys) {
+        Set<String> result = null;
+        try {
+            result = conn.sdiff(keys);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+        return result;
+    }
+
+    public Set<String> sinter(final String... keys) {
+        Set<String> result = null;
+        try {
+            result = conn.sinter(keys);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+        return result;
+    }
+
+
+    public Set<String> sunion(final String... keys) {
+        Set<String> result = null;
+        try {
+            result = conn.sunion(keys);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+        return result;
+    }
+
+
     public Long sadd(String key, String... member) {
         Long result = null;
         try {
@@ -623,10 +694,30 @@ public class RedisClient {
         return result;
     }
 
+    public Long smove(String srckey, String dstkey, String member) {
+        Long result = null;
+        try {
+            result = conn.smove(srckey, dstkey, member);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+        return result;
+    }
+
     public Long srem(String key, String member) {
         Long result = null;
         try {
             result = conn.srem(key, member);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+        return result;
+    }
+
+    public Long srem(final String key, final String... members) {
+        Long result = null;
+        try {
+            result = conn.srem(key, members);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }
@@ -682,6 +773,10 @@ public class RedisClient {
             log.error(e.getMessage(), e);
         }
         return result;
+    }
+
+    public Long zadd(final String key, final Map<String, Double> scoreMembers) {
+        return conn.zadd(key, scoreMembers);
     }
 
     public Set<String> zrange(String key, int start, int end) {
@@ -924,6 +1019,7 @@ public class RedisClient {
 
     /**
      * 返回删除元素的个数
+     *
      * @param key
      * @param start
      * @param end
@@ -965,6 +1061,10 @@ public class RedisClient {
 
     public long zinterstore(String key, ZParams params, String... sets) {
         return conn.zinterstore(key, params, sets);
+    }
+
+    public long zunionstore(String key, ZParams params, String... sets) {
+        return conn.zunionstore(key, params, sets);
     }
 
     public void select(int i) {
