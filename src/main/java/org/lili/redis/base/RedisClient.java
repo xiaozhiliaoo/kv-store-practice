@@ -37,6 +37,15 @@ public class RedisClient {
         return conn.multi();
     }
 
+    public String watch(String watch) {
+        return conn.watch(watch);
+    }
+
+    public String unwatch() {
+        return conn.unwatch();
+    }
+
+
     public Map<String, String> hgetAll(String key) {
         Map<String, String> result = null;
         try {
@@ -323,6 +332,7 @@ public class RedisClient {
         }
         return result;
     }
+
 
     public Long hset(String key, String field, String value) {
         Long result = null;
@@ -1069,5 +1079,44 @@ public class RedisClient {
 
     public void select(int i) {
         conn.select(i);
+    }
+
+
+    public String info() {
+        String result = null;
+        try {
+            result = conn.info();
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+        return result;
+    }
+
+
+    public List<String> configGet(String pattern) {
+        List<String> result = null;
+        try {
+            result = conn.configGet(pattern);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+        return result;
+    }
+
+    public void watch(String s, String buyer) {
+        conn.watch(s, buyer);
+    }
+
+    public Long append(final byte[] key, final byte[] value) {
+
+        return conn.append(key, value);
+    }
+
+    public long strlen(String key) {
+        return conn.strlen(key);
+    }
+
+    public byte[] substr(final byte[] key, final int start, final int end) {
+        return conn.substr(key, start, end);
     }
 }
