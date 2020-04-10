@@ -223,6 +223,16 @@ public class RedisClient {
         return result;
     }
 
+    public long bitcount(String key) {
+        long result = 0L;
+        try {
+            result = conn.bitcount(key);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+        return result;
+    }
+
     public long setrange(String key, long offset, String value) {
         long result = 0;
         try {
@@ -1118,5 +1128,9 @@ public class RedisClient {
 
     public byte[] substr(final byte[] key, final int start, final int end) {
         return conn.substr(key, start, end);
+    }
+
+    public byte[] get(byte[] bytes) {
+        return conn.get(bytes);
     }
 }
