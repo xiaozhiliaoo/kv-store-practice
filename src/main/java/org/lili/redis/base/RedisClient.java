@@ -23,8 +23,7 @@ public class RedisClient {
     static {
         client = new RedisClient();
         JedisPoolConfig poolConfig = new JedisPoolConfig();
-        pool = new JedisPool(poolConfig, "192.168.197.100",
-                6379, 30000, "test", 0);
+        pool = new JedisPool(poolConfig, "127.0.0.1", 6379);
         conn = pool.getResource();
     }
 
@@ -1073,6 +1072,16 @@ public class RedisClient {
             log.error(e.getMessage(), e);
         }
         return result;
+    }
+
+    public byte[] dump(String key) {
+        Double result = null;
+        try {
+           return conn.dump(key);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+        return null;
     }
 
     public void redisPublish(String channel, String message) throws Exception {

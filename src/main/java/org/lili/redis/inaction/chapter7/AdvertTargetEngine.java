@@ -121,10 +121,12 @@ public class AdvertTargetEngine extends Base {
                 index++;
             }
 
-            ZParams minParams = new ZParams().aggregate(ZParams.Aggregate.MIN).weights(weights);
+            ZParams minParams = null;
+                    //new ZParams().aggregate(ZParams.Aggregate.MIN).weights(weights);
             String minimum = searchManager.zunion(trans, 30, minParams, keys);
 
-            ZParams maxParams = new ZParams().aggregate(ZParams.Aggregate.MAX).weights(weights);
+            ZParams maxParams = null;
+                    //new ZParams().aggregate(ZParams.Aggregate.MAX).weights(weights);
             String maximum = searchManager.zunion(trans, 30, maxParams, keys);
 
             String result = searchManager.zunion(

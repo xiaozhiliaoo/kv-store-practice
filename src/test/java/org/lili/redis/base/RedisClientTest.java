@@ -19,4 +19,10 @@ public class RedisClientTest {
             RedisClient.newClient().incr("fast");
         }
     }
+
+    @Test
+    public void dump() {
+        byte[] dumps = RedisClient.newClient().dump("myhash");
+        System.out.println(new String(dumps));
+    }
 }

@@ -61,7 +61,7 @@ public class JobSearchManager extends Base {
         }
 
         Transaction trans = conn.multi();
-        String jobScores = searchManager.zunion(trans, 30, new ZParams().weights(weights), keys);
+        String jobScores = searchManager.zunion(trans, 30, new ZParams().weights(null), keys);
         String finalResult =searchManager.zintersect(trans, 30, new ZParams().weights(-1, 1), jobScores, "jobs:req");
         trans.exec();
 
