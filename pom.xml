@@ -90,6 +90,13 @@
             <version>28.2-jre</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.moilioncircle/redis-replicator -->
+        <dependency>
+            <groupId>com.moilioncircle</groupId>
+            <artifactId>redis-replicator</artifactId>
+            <version>3.4.3</version>
+        </dependency>
+
 
 
 
