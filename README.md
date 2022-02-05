@@ -1,4 +1,4 @@
-# kv-store-pracitce
+# kv-store-practice
 
 kv store practice redis, riak, [mapdb](https://mapdb.org/) ...
 
