@@ -1,24 +1,11 @@
 # kv-store-pracitce
-kv store practice redis,riak ...
 
+kv store practice redis, riak, [mapdb](https://mapdb.org/) ...
 
+## Book
 
-## Introduce
+[书籍整理](./book)
 
+## Wikipedia
 
-https://en.wikipedia.org/wiki/Redis
-
-https://redis.io/
-
-
-
-## Best Practice And Usage Pattern
-
-https://redislabs.com/redis-best-practices/introduction/
-
-
-
-## Slides
-
-https://www2.slideshare.net/RedisLabs
-
+[百科](./wikipedia)
