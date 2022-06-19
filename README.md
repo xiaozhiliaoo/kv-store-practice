@@ -1,6 +1,6 @@
 # kv-store-practice
 
-kv store practice redis, riak, [mapdb](https://mapdb.org/) ...
+kv store practice redis, riak, [mapdb](https://mapdb.org/), rocksdb, leveldb ...
 
 ## Book
 
